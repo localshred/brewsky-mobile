@@ -1,0 +1,1 @@
+(cemerick.piggieback/cljs-repl (cljs.repl.rhino/repl-env))
