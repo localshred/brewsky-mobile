@@ -44,12 +44,13 @@
   [default-text
    style-key
    text-style-key
+   on-press
    user-text
    style-overrides
    text-style-overrides]
   (let [style (merge-styles style-key style-overrides)
         text-style (merge-styles text-style-key text-style-overrides)
-        button-props {:style style :text-style text-style}
+        button-props {:style style :text-style text-style :on-press on-press}
         text (if (empty? user-text) default-text user-text)]
     [ui/button button-props text]))
 
@@ -58,14 +59,16 @@
     button
     "+"
     :button-right
-    :button-right-text-style))
+    :button-right-text-style
+    #(ui/alert "What is this button even for, bro?")))
 
 (def left-button
   (partial
     button
     "☰"
     :button-left
-    :button-left-text-style))
+    :button-left-text-style
+    #(ui/alert "Open the menu, bro")))
 
 (defn title
   [display-text style-overrides]

@@ -18,8 +18,8 @@
              :extract-beer-button {:background-color (:dodger-blue colors)}
 
              :new-brew-button {:flex 5
-                               :margin 0
-                               :padding 0
+                               :margin-bottom 0
+                               :padding-bottom 0
                                :border-radius 0}
 
              :new-brew-button-inner-view {
