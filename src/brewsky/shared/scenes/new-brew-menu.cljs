@@ -6,15 +6,66 @@
             [brewsky.events]
             [brewsky.subs]))
 
-(def styles {:container {:align-items "center"
+(def styles {:all-grains-beer-button {:background-color (:purple-heart colors)}
+
+             :container {:align-items "center"
                          :background-color (:shark colors)
                          :flex 1
-                         :justify-content "center"}})
+                         :justify-content "center"}
 
-(def status-bar [ui/status-bar {:bar-style "light-content"}])
+             :custom-beer-button {:background-color (:buttercup colors)}
 
-(def container [ui/view {:style (:container styles)}
-                status-bar
-                (title-bar/component {:title "New Brew"})])
+             :extract-beer-button {:background-color (:dodger-blue colors)}
+
+             :new-brew-button {:flex 5
+                               :margin 0
+                               :padding 0
+                               :border-radius 0}
+
+             :new-brew-button-inner-view {
+                                          }
+
+
+             :new-brew-button-inner-view-plus {
+                                               :text-align "center"
+                                               :color (:white colors)
+                                               :font-size 60
+                                               }
+             :new-brew-button-inner-view-title {
+                                                :text-align "center"
+                                                :color (:white colors)
+                                                :font-size 22
+                                                }
+
+             })
+
+(def status-bar
+  [ui/status-bar {:bar-style "light-content"}])
+
+(defn new-brew-button
+  [{:keys [title on-press style-key]}]
+  (let [default-style (:new-brew-button styles {})
+        override-style (style-key styles {})
+        style (merge default-style override-style)
+        props {:style style :on-press on-press}]
+    [ui/button
+     props
+     [ui/view {:style (:new-brew-button-inner-view styles {})}
+      [ui/text {:style (:new-brew-button-inner-view-plus styles {})} "+"]
+      [ui/text {:style (:new-brew-button-inner-view-title styles {})} title]]]))
+
+(def container
+  [ui/view {:style (:container styles {})}
+   status-bar
+   (title-bar/component {:title "New Brew"})
+   (new-brew-button {:title "Extract Beer"
+                     :on-press #(ui/alert "Pressed Extract")
+                     :style-key :extract-beer-button})
+   (new-brew-button {:title "All Grain Beer"
+                     :on-press #(ui/alert "Pressed all grains")
+                     :style-key :all-grains-beer-button})
+   (new-brew-button {:title "Custom Beer"
+                     :on-press #(ui/alert "Pressed custom")
+                     :style-key :custom-beer-button})])
 
 (defn component [] container)
