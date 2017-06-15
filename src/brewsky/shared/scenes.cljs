@@ -1,5 +1,6 @@
 (ns brewsky.shared.scenes
   (:require [re-frame.core :refer [subscribe]]
+            [brewsky.shared.scenes.create-extract-brew :as create-extract-brew]
             [brewsky.shared.scenes.new-brew-menu :as new-brew-menu]
             [brewsky.shared.subs.navigation :as navigation]))
 
@@ -9,7 +10,8 @@
 
 (def scenes
   "All of the scenes we can render as top-level scenes."
-  {:new-brew-menu new-brew-menu/component})
+  {:create-extract-brew create-extract-brew/component
+   :new-brew-menu new-brew-menu/component})
 
 (defn scene?
   "Is the given scene known?"
