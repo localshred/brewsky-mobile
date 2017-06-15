@@ -1,0 +1,108 @@
+{
+  "*": {
+    "start": "make start",
+    "make": "make test",
+    "dispatch": "make test"
+  },
+
+  "src/*.cljs": {
+    "type": "src",
+    "alternate": "test/{}_test.cljs",
+    "make": "lein test {dot|hyphenate}-test",
+    "dispatch": "lein test {dot|hyphenate}-test",
+    "template": [
+      "(ns {dot|hyphenate}",
+      "  (:require))"
+    ]
+  },
+
+  "src/brewsky/shared/events/*.cljs": {
+    "type": "event",
+    "template": [
+      "(ns brewsky.shared.events.{dot|hyphenate}",
+      "  (:require [re-frame.core :refer [dispatch]]))",
+      "",
+      ";; IMPORTANT!!! DELETE ME - Don't forget to map these events in brewsky/src/events.cljs",
+      "",
+      ";; Event Dispatchers",
+      "",
+      "(defn dispatch->store-derived-data",
+      "  \"Dispatch a :{basename|hyphenate}/store-derived-data event.\"",
+      "  [derived-value-to-store]",
+      "  (dispatch [:{basename|hyphenate}/some-data derived-value-to-store]))",
+      "",
+      ";; Event Handlers",
+      "",
+      "(defn store-derived-data",
+      "  \"Handles a :{basename|hyphenate}/store-derived-data event.",
+      "  __ADDITIONAL DESCRIPTION__\"",
+      "  [db [_ derived-value-to-store]]",
+      "  (assoc db :some-data derived-value-to-store))",
+      ""
+    ]
+  },
+
+  "src/brewsky/shared/scenes/*.cljs": {
+    "type": "scene",
+    "template": [
+      "(ns brewsky.shared.scenes.{dot|hyphenate}",
+      "  (:require [brewsky.shared.ui :as ui]))",
+      "",
+      ";; IMPORTANT!!! DELETE ME - Don't forget to map this scene in brewsky/src/shared/scenes.cljs",
+      "",
+      "(def styles",
+      "  { :container",
+      "   {:align-items \"center\"",
+      "    :background-color (:shark ui/colors)",
+      "    :flex 1",
+      "    :justify-content \"center\"}})",
+      "",
+      "(def container",
+      "  \"Container component for this scene\"",
+      "  [])",
+      "",
+      "(defn component [] container)"
+    ]
+  },
+
+  "src/brewsky/shared/subs/*.cljs": {
+    "type": "sub",
+    "template": [
+      "(ns brewsky.shared.subs.{dot|hyphenate}",
+      "  (:require [re-frame.core :refer [subscribe]]))",
+      "",
+      ";; IMPORTANT!!! DELETE ME - Don't forget to map these subscribers in brewsky/src/subs.cljs",
+      "",
+      ";; Subscriptions",
+      "",
+      "(defn subscription->some-data",
+      "  \"A ratom indicating __DESCRIPTION__\"",
+      "  []",
+      "  (subscribe [:{basename|hyphenate}/some-data]))",
+      "",
+      ";; Subscription Handlers",
+      "",
+      "(defn some-data",
+      "  \"__QUERY DESCRIPTION__\"",
+      "  [db _]",
+      "  (:some-data db))",
+      ""
+    ]
+  },
+
+  "test/*_test.cljs": {
+    "type": "test",
+    "alternate": "{}.cljs",
+    "make": "lein test {dot|hyphenate}-test",
+    "dispatch": "lein test {dot|hyphenate}-test",
+    "template": [
+      "(ns {dot|hyphenate}-test",
+      "  (:require [cljs.test :refer :all]",
+      "            [{dot|hyphenate} :refer :all]))",
+      "",
+      "(deftest a-test",
+      "  (testing \"FIXME, I fail.\"",
+      "    (is (= 1 0))))"
+    ]
+  }
+}
