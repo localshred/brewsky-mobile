@@ -61,3 +61,6 @@ target/
 # Figwheel
 #
 figwheel_server.log
+.cljs_rhino_repl/brewsky/shared/
+.lein-failures
+.lein-repl-history

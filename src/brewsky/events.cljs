@@ -2,7 +2,8 @@
   (:require
    [re-frame.core :refer [reg-event-db after]]
    [clojure.spec.alpha :as s]
-   [brewsky.db :as db :refer [app-db]]))
+   [brewsky.db :as db :refer [app-db]]
+   [brewsky.shared.events.navigation :as navigation]))
 
 ;; -- Interceptors ------------------------------------------------------------
 ;;
@@ -20,16 +21,33 @@
     (after (partial check-and-throw ::db/app-db))
     []))
 
+(defn log-ex
+  [handler]
+  (fn log-ex-handler
+    [db v]
+    (try
+      (handler db v)        ;; call the handler with a wrapping try
+      (catch :default e     ;; ooops
+        (do
+          (.error js/console e.stack)   ;; print a sane stacktrace
+          (throw e))))))
+
 ;; -- Handlers --------------------------------------------------------------
 
-(reg-event-db
- :initialize-db
- validate-spec
- (fn [_ _]
-   app-db))
+(defn initialize-db
+  [_ _]
+  app-db)
 
-(reg-event-db
- :set-greeting
- validate-spec
- (fn [db [_ value]]
-   (assoc db :greeting value)))
+(def db-events
+  "Describes all db-related events (to be used in conjunction with re-frame.core/reg-event-db)"
+  {:initialize-db initialize-db
+   :navigation/pop-scene navigation/pop-scene
+   :navigation/push-scene navigation/push-scene
+   :navigation/replace-scenes navigation/replace-scenes})
+
+;; Register all the db event handlers
+(doseq [[event-name handler] (seq db-events)]
+  (reg-event-db
+    event-name
+    validate-spec
+    handler))

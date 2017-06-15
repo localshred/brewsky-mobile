@@ -1,38 +1,43 @@
 (ns brewsky.shared.components.title-bar
   (:require [reagent.core :as r]
             [brewsky.shared.colors :refer [colors]]
-            [brewsky.shared.ui :as ui]
-            [brewsky.events]
-            [brewsky.subs]))
+            [brewsky.shared.ui :as ui]))
 
-(def styles {:component {:flex 1
-                         :flex-direction "row"
-                         :height 70
-                         :justify-content "center"
-                         :margin-top 20
-                         :margin-bottom 20
-                         }
+(def styles
+  {:component
+   {:flex 1
+    :flex-direction "row"
+    :height 70
+    :justify-content "center"
+    :margin-top 20
+    :margin-bottom 20
+    }
 
-             :button-right {:border-width 0
-                            :flex 1
-                            :padding 20}
+   :button-right
+   {:border-width 0
+    :flex 1
+    :padding 20}
 
-             :button-right-text-style {:font-size 35
-                                       :color (:denim colors)}
+   :button-right-text-style
+   {:color (:denim colors)
+    :font-size 35}
 
-             :button-left {:border-width 0
-                           :flex 1
-                           :padding 20}
+   :button-left
+   {:border-width 0
+    :flex 1
+    :padding 20}
 
-             :button-left-text-style {:font-size 25
-                                      :color (:oslo-gray colors)}
+   :button-left-text-style
+   {:color (:oslo-gray colors)
+    :font-size 25}
 
-             :title {:color (:oslo-gray colors)
-                     :flex 10
-                     :font-size 20
-                     :padding-top 15
-                     :text-align "center"
-                     :width 75}})
+   :title
+   {:color (:oslo-gray colors)
+    :flex 10
+    :font-size 20
+    :padding-top 15
+    :text-align "center"
+    :width 75}})
 
 (defn merge-styles
   [styles-key overrides]

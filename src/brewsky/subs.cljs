@@ -1,7 +1,5 @@
 (ns brewsky.subs
-  (:require [re-frame.core :refer [reg-sub]]))
+  (:require [re-frame.core :refer [reg-sub]]
+            [brewsky.shared.subs.navigation :as navigation]))
 
-(reg-sub
-  :get-greeting
-  (fn [db _]
-    (:greeting db)))
+(reg-sub :navigation/current-scene navigation/current-scene)
