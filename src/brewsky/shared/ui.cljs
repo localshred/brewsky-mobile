@@ -1,7 +1,7 @@
 (ns brewsky.shared.ui
   (:require [reagent.core :as r]
             [clojure.string :as str]
-            [brewsky.shared.colors]]))
+            [brewsky.shared.colors]))
 
 (enable-console-print!)
 
