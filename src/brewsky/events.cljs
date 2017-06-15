@@ -35,6 +35,7 @@
 ;; -- Handlers --------------------------------------------------------------
 
 (defn initialize-db
+  "Returns the initial app-db. Called by src/<platform>/core.js synchronously."
   [_ _]
   app-db)
 

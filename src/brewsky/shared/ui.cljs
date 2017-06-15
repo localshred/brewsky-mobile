@@ -1,6 +1,7 @@
 (ns brewsky.shared.ui
   (:require [reagent.core :as r]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [brewsky.shared.colors]]))
 
 (enable-console-print!)
 
@@ -44,6 +45,10 @@
 (def vibration (.-Vibration react-native))
 (def view (r/adapt-react-class (.-View react-native)))
 
+;; Other
+
+(def colors brewsky.shared.colors/colors)
+
 ; (def NavigationExperimental (.-NavigationExperimental react-native))
 ; (def NavigationExperimentalHeader (.-Header (.-NavigationExperimental react-native)))
 ; (def card-stack (r/adapt-react-class (.-CardStack NavigationExperimental)))
@@ -78,7 +83,6 @@
 ; (def webrtc (js/require "react-native-webrtc"))
 ; (def rtc-view (r/adapt-react-class (.-RTCView webrtc)))
 ; (def moment (js/require "moment"))
-; (def colors color/colors)
 ; (def code-push (js/require "react-native-code-push"))
 ; (def Drawer (js/require "react-native-drawer"))
 ; (def drawer (r/adapt-react-class Drawer))

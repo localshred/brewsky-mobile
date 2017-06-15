@@ -20,7 +20,7 @@
   [scene]
   (dispatch [:navigate/replace-scenes scene]))
 
-;; Event handlers
+;; Event Handlers
 
 (defn pop-scene
   "Handles the :navigation/pop-scene event.

@@ -1,24 +1,22 @@
 (ns brewsky.shared.scenes.new-brew-menu
-  (:require [reagent.core :as r]
-            [brewsky.shared.colors :refer [colors]]
-            [brewsky.shared.ui :as ui]
+  (:require [brewsky.shared.ui :as ui]
             [brewsky.shared.components.title-bar :as title-bar]))
 
 (def styles
   {:all-grains-beer-button
-   {:background-color (:purple-heart colors)}
+   {:background-color (:purple-heart ui/colors)}
 
    :container
    {:align-items "center"
-    :background-color (:shark colors)
+    :background-color (:shark ui/colors)
     :flex 1
     :justify-content "center"}
 
    :custom-beer-button
-   {:background-color (:buttercup colors)}
+   {:background-color (:buttercup ui/colors)}
 
    :extract-beer-button
-   {:background-color (:dodger-blue colors)}
+   {:background-color (:dodger-blue ui/colors)}
 
    :new-brew-button
    {:flex 5
@@ -33,12 +31,12 @@
    :new-brew-button-inner-view-plus
    {:margin-top -30
     :text-align "center"
-    :color (:white colors)
+    :color (:white ui/colors)
     :font-size 60}
 
    :new-brew-button-inner-view-title
    {:text-align "center"
-    :color (:white colors)
+    :color (:white ui/colors)
     :font-size 22}})
 
 (def status-bar
