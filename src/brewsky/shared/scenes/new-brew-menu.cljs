@@ -1,6 +1,7 @@
 (ns brewsky.shared.scenes.new-brew-menu
   (:require [brewsky.shared.ui :as ui]
-            [brewsky.shared.components.title-bar :as title-bar]))
+            [brewsky.shared.components.title-bar :as title-bar]
+            [brewsky.shared.events.navigation :as navigation]))
 
 (def styles
   {:all-grains-beer-button
@@ -60,7 +61,7 @@
    (title-bar/component {:title "New Brew"})
    (new-brew-button
      {:title "Extract Beer"
-      :on-press #(ui/alert "Pressed Extract")
+      :on-press #(navigation/dispatch->push-scene :create-extract-brew)
       :style-key :extract-beer-button})
    (new-brew-button
      {:title "All Grain Beer"

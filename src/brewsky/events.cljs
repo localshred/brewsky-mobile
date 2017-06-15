@@ -39,16 +39,7 @@
   [_ _]
   app-db)
 
-(def db-events
-  "Describes all db-related events (to be used in conjunction with re-frame.core/reg-event-db)"
-  {:initialize-db initialize-db
-   :navigation/pop-scene navigation/pop-scene
-   :navigation/push-scene navigation/push-scene
-   :navigation/replace-scenes navigation/replace-scenes})
-
-;; Register all the db event handlers
-(doseq [[event-name handler] (seq db-events)]
-  (reg-event-db
-    event-name
-    validate-spec
-    handler))
+(reg-event-db :initialize-db validate-spec initialize-db)
+(reg-event-db :navigation/pop-scene validate-spec navigation/pop-scene)
+(reg-event-db :navigation/push-scene validate-spec navigation/push-scene)
+(reg-event-db :navigation/replace-scenes validate-spec navigation/replace-scenes)

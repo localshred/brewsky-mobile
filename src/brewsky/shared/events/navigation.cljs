@@ -13,12 +13,12 @@
 (defn dispatch->push-scene
   "Dispatch a :navigation/push-scene event with the given scene."
   [scene]
-  (dispatch [:navigate/push-scene scene]))
+  (dispatch [:navigation/push-scene scene]))
 
 (defn dispatch->replace-scenes
   "Dispatch a :navigation/replace-scenes event with the given scene."
   [scene]
-  (dispatch [:navigate/replace-scenes scene]))
+  (dispatch [:navigation/replace-scenes scene]))
 
 ;; Event Handlers
 
