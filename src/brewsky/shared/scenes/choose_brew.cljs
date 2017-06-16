@@ -2,8 +2,6 @@
   (:require [brewsky.shared.ui :as ui]
             [brewsky.shared.events.navigation :as navigation]))
 
-;; IMPORTANT!!! DELETE ME - Don't forget to map this scene in brewsky/src/shared/scenes.cljs
-
 (def styles
   {:container
    {:align-items "center"
