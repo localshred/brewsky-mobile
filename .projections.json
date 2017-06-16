@@ -119,8 +119,10 @@
     "dispatch": "lein test {dot|hyphenate}-test",
     "template": [
       "(ns {dot|hyphenate}-test",
-      "  (:require [cljs.test :refer :all]",
-      "            [{dot|hyphenate} :refer :all]))",
+      "  (:require [cljs.test :refer [deftest is are testing]]",
+      "            [{dot|hyphenate} :as {basename|hyphenate}]))",
+      "",
+      ";; IMPORTANT!!! DELETE ME - Don't forget to :require these tests in test/runners/doo.cljs",
       "",
       "(deftest a-test",
       "  (testing \"FIXME, I fail.\"",

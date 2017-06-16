@@ -54,3 +54,16 @@ $ make run
 $ make run PLATFORM=android
 ```
 
+## Running tests
+
+Running `make test` will run compile your src and test files, watching for changes,
+and will run the `test/runners/doo.cljs` file.
+
+Tests are not auto-discovered, so be sure to `:require` your test in `test/runners/doo.cljs`
+and add the quoted namespace to the function call at the bottom of the file.
+
+```shell
+# Automatically runs tests on file changes
+$ make test
+```
+
