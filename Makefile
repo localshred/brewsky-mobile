@@ -25,6 +25,6 @@ run:
 	react-native run-${PLATFORM}
 
 test:
-	lein doo node test once
+	lein doo node test auto
 
 .PHONY: install link repl start run test
