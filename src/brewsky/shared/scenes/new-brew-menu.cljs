@@ -65,11 +65,11 @@
       :style-key :extract-beer-button})
    (new-brew-button
      {:title "All Grain Beer"
-      :on-press #(ui/alert "Pressed all grains")
+      :on-press #(navigation/dispatch->push-scene :choose-brew)
       :style-key :all-grains-beer-button})
    (new-brew-button
      {:title "Custom Beer"
-      :on-press #(ui/alert "Pressed custom")
+      :on-press #(navigation/dispatch->push-scene :choose-brew)
       :style-key :custom-beer-button})])
 
 (defn component [] container)

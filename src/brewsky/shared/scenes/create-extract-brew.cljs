@@ -12,7 +12,7 @@
 (def container
   "Container component for this scene"
   [ui/view
-   {}
+   {:style (:container styles {})}
    [ui/text {} "Create Extract Brew"]
    [ui/button
     {:on-press #(navigation/dispatch->pop-scene)}
