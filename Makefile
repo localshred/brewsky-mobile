@@ -23,3 +23,8 @@ start:
 # Compile the project with xcode and run on the simulator
 run:
 	react-native run-${PLATFORM}
+
+test:
+	lein doo node test once
+
+.PHONY: install link repl start run test
