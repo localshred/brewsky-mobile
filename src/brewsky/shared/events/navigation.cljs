@@ -27,10 +27,10 @@
   Pop the top scene off the stack, effectively pressing the back button."
   [db [_]]
   (let [stack (db-scene-stack-key db)
-        can-pop? (> (count stack) 1)]
-    (if can-pop?
-      (assoc db db-scene-stack-key (pop stack))
-      db)))
+        stack-size (count stack)]
+    (case stack-size
+      1 db
+      (assoc db db-scene-stack-key (pop stack)))))
 
 (defn push-scene
   "Handles the :navigation/push-scene event.

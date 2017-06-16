@@ -14,6 +14,6 @@
   "Returns the last element of the :scene-stack from the db indicating
   which scene should be currently displayed to the user."
   [db _]
-  (let [scene-stack (:scene-stack db [:foo])
+  (let [scene-stack (:scene-stack db [])
         current-scene (last scene-stack)]
     current-scene))
