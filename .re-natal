@@ -3,12 +3,11 @@
   "interface": "reagent6",
   "envRoots": {
     "dev": "env/dev",
-    "prod": "env/prod"
+    "prod": "env/prod",
+    "test": "env/test"
   },
   "modules": [
-    "apsl-react-native-button",
-    "apsl-react-native-button",
-    "react-navigation"
+    "apsl-react-native-button"
   ],
   "imageDirs": [
     "images"
