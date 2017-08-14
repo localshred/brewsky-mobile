@@ -66,7 +66,7 @@
     "+"
     :button-right
     :button-right-text-style
-    #(navigation/dispatch->push-scene :recipe-add-wizard)))
+    #(navigation/dispatch->push-scene :recipes-create)))
 
 (def left-button
   (partial

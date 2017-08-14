@@ -1,8 +1,6 @@
-(ns brewsky.shared.scenes.recipes
+(ns brewsky.shared.scenes.recipes.list
   (:require [brewsky.shared.ui :as ui]
             [brewsky.shared.events.navigation :as navigation]))
-
-;; IMPORTANT!!! DELETE ME - Don't forget to map this scene in brewsky/src/shared/scenes.cljs
 
 (def styles
   {:container
@@ -18,13 +16,13 @@
            :font-size 35
            :margin-bottom 50}})
 
-(defn add-brew-button
-  "Render a button which will show the add-brew-menu scene on press"
+(defn add-recipe-button
+  "Render a button which will show the :recipes-create scene on press"
   []
   [ui/button
     {:style (:add-brew-button styles {})
      :text-style (:add-brew-button-text-style styles {})
-     :on-press #(navigation/dispatch->push-scene :recipe-add-wizard)}
+     :on-press #(navigation/dispatch->push-scene :recipes-create)}
     "Add Recipe +"])
 
 (defn title
@@ -38,6 +36,6 @@
   "Container component for this scene"
   [ui/view {:style (:container styles {})}
    (title "Recipes")
-   (add-brew-button)])
+   (add-recipe-button)])
 
 (defn component [] container)

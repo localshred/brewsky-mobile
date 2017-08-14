@@ -1,7 +1,7 @@
-(ns brewsky.shared.scenes.recipe-add-wizard
+(ns brewsky.shared.scenes.recipes.create
   (:require [brewsky.shared.ui :as ui]
-            [brewsky.shared.components.title-bar :as title-bar]
-            [brewsky.shared.events.navigation :as navigation]))
+            [brewsky.shared.events.navigation :as navigation]
+            [brewsky.shared.components.title-bar :as title-bar]))
 
 (def styles
   {:all-grains-beer-button
@@ -61,15 +61,15 @@
    (title-bar/component {:title "New Brew"})
    (new-brew-button
      {:title "Extract Beer"
-      :on-press #(navigation/dispatch->push-scene :create-extract-brew)
+      :on-press #(navigation/dispatch->push-scene :recipes-create)
       :style-key :extract-beer-button})
    (new-brew-button
      {:title "All Grain Beer"
-      :on-press #(navigation/dispatch->push-scene :choose-brew)
+      :on-press #(navigation/dispatch->push-scene :recipes-create)
       :style-key :all-grains-beer-button})
    (new-brew-button
      {:title "Custom Beer"
-      :on-press #(navigation/dispatch->push-scene :choose-brew)
+      :on-press #(navigation/dispatch->push-scene :recipes-create)
       :style-key :custom-beer-button})])
 
 (defn component [] container)
