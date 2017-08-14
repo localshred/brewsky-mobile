@@ -74,7 +74,7 @@
     "☰"
     :button-left
     :button-left-text-style
-    #(navigation/dispatch->replace-scenes :recipes)))
+    #(navigation/dispatch->replace-scenes :recipes-list)))
 
 (defn title
   [display-text style-overrides]
