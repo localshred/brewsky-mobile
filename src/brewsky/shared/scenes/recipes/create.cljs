@@ -55,21 +55,19 @@
       [ui/text {:style (:new-brew-button-inner-view-plus styles {})} "+"]
       [ui/text {:style (:new-brew-button-inner-view-title styles {})} title]]]))
 
+(defn button
+  [title push-scene-key style-key]
+  (new-brew-button
+    {:title title
+     :on-press #(navigation/dispatch->push-scene push-scene-key)
+     :style-key style-key}))
+
 (def container
   [ui/view {:style (:container styles {})}
    status-bar
    (title-bar/component {:title "New Brew"})
-   (new-brew-button
-     {:title "Extract Beer"
-      :on-press #(navigation/dispatch->push-scene :recipes-create)
-      :style-key :extract-beer-button})
-   (new-brew-button
-     {:title "All Grain Beer"
-      :on-press #(navigation/dispatch->push-scene :recipes-create)
-      :style-key :all-grains-beer-button})
-   (new-brew-button
-     {:title "Custom Beer"
-      :on-press #(navigation/dispatch->push-scene :recipes-create)
-      :style-key :custom-beer-button})])
+   (button "Extract Beer" :recipes-create :extract-beer-button)
+   (button "All Grain Beer" :recipes-create :all-grains-beer-button)
+   (button "Custom Beer" :recipes-create :custom-beer-button)])
 
 (defn component [] container)
