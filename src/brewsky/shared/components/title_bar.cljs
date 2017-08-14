@@ -1,7 +1,8 @@
 (ns brewsky.shared.components.title-bar
   (:require [reagent.core :as r]
             [brewsky.shared.colors :refer [colors]]
-            [brewsky.shared.ui :as ui]))
+            [brewsky.shared.ui :as ui]
+            [brewsky.shared.events.navigation :as navigation]))
 
 (def styles
   {:component
@@ -65,7 +66,7 @@
     "+"
     :button-right
     :button-right-text-style
-    #(ui/alert "What is this button even for, bro?")))
+    #(navigation/dispatch->push-scene :recipe-add-wizard)))
 
 (def left-button
   (partial
@@ -73,7 +74,7 @@
     "☰"
     :button-left
     :button-left-text-style
-    #(ui/alert "Open the menu, bro")))
+    #(navigation/dispatch->replace-scenes :recipes)))
 
 (defn title
   [display-text style-overrides]

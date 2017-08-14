@@ -1,4 +1,4 @@
-(ns brewsky.shared.scenes.new-brew-menu
+(ns brewsky.shared.scenes.recipe-add-wizard
   (:require [brewsky.shared.ui :as ui]
             [brewsky.shared.components.title-bar :as title-bar]
             [brewsky.shared.events.navigation :as navigation]))

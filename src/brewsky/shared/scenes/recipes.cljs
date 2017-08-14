@@ -1,6 +1,8 @@
-(ns brewsky.shared.scenes.choose-brew
+(ns brewsky.shared.scenes.recipes
   (:require [brewsky.shared.ui :as ui]
             [brewsky.shared.events.navigation :as navigation]))
+
+;; IMPORTANT!!! DELETE ME - Don't forget to map this scene in brewsky/src/shared/scenes.cljs
 
 (def styles
   {:container
@@ -9,21 +11,21 @@
     :flex 1
     :justify-content "center"}
 
-   :back-button {}
-   :back-button-text-style {:color (:white ui/colors)}
+   :add-brew-button {}
+   :add-brew-button-text-style {:color (:white ui/colors)}
 
    :title {:color (:white ui/colors)
            :font-size 35
            :margin-bottom 50}})
 
-(defn back-button
-  "Navigate to the prior screen"
+(defn add-brew-button
+  "Render a button which will show the add-brew-menu scene on press"
   []
   [ui/button
-    {:style (:back-button styles {})
-     :text-style (:back-button-text-style styles {})
-     :on-press #(navigation/dispatch->pop-scene)}
-    "Back"])
+    {:style (:add-brew-button styles {})
+     :text-style (:add-brew-button-text-style styles {})
+     :on-press #(navigation/dispatch->push-scene :recipe-add-wizard)}
+    "Add Recipe +"])
 
 (defn title
   "Title for this scene"
@@ -35,7 +37,7 @@
 (def container
   "Container component for this scene"
   [ui/view {:style (:container styles {})}
-    (title "Choose your brew type")
-    (back-button)])
+   (title "Recipes")
+   (add-brew-button)])
 
 (defn component [] container)

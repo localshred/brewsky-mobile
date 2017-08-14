@@ -7,7 +7,9 @@
     "test": "env/test"
   },
   "modules": [
-    "apsl-react-native-button"
+    "apsl-react-native-button",
+    "react",
+    "react-native"
   ],
   "imageDirs": [
     "images"

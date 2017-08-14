@@ -3,7 +3,7 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.9.0-alpha16"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha17"]
                  [org.clojure/clojurescript "1.9.542"]
                  [reagent "0.6.1" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server]]
                  [re-frame "0.9.2"]]
@@ -37,7 +37,7 @@
                                            {:id "test"
                                             :source-paths ["src" "test" "env/test"]
                                             :compiler {:main runners.doo
-                                                       :preloads '[env.all]
+                                                       :preloads [env.all]
                                                        :optimizations :none
                                                        :target :nodejs
                                                        :output-to "target/test/all-tests.js"

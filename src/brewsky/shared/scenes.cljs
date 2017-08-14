@@ -2,18 +2,20 @@
   (:require [re-frame.core :refer [subscribe]]
             [brewsky.shared.scenes.choose-brew :as choose-brew]
             [brewsky.shared.scenes.create-extract-brew :as create-extract-brew]
-            [brewsky.shared.scenes.new-brew-menu :as new-brew-menu]
+            [brewsky.shared.scenes.recipe-add-wizard :as recipe-add-wizard]
+            [brewsky.shared.scenes.recipes :as recipes]
             [brewsky.shared.subs.navigation :as navigation]))
 
 (def default-scene
   "The scene to render initially or if a given scene is not known."
-  :new-brew-menu)
+  :recipes)
 
 (def scenes
   "All of the scenes we can render as top-level scenes."
   {:choose-brew choose-brew/component
    :create-extract-brew create-extract-brew/component
-   :new-brew-menu new-brew-menu/component})
+   :recipe-add-wizard recipe-add-wizard/component
+   :recipes recipes/component})
 
 (defn scene?
   "Is the given scene known?"

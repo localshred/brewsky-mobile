@@ -13,6 +13,13 @@
       <url>http://www.eclipse.org/legal/epl-v10.html</url>
     </license>
   </licenses>
+  <scm>
+    <connection>scm:git:git://github.com/localshred/brewsky-mobile.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/localshred/brewsky-mobile.git</developerConnection>
+    <tag>4e0d894e1fb23cba16841b00c815aab0a871bdd7
+</tag>
+    <url>https://github.com/localshred/brewsky-mobile</url>
+  </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
@@ -59,7 +66,7 @@
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
-      <version>1.9.0-alpha16</version>
+      <version>1.9.0-alpha17</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
@@ -100,6 +107,12 @@
       <groupId>com.cemerick</groupId>
       <artifactId>piggieback</artifactId>
       <version>0.2.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>lein-doo</groupId>
+      <artifactId>lein-doo</artifactId>
+      <version>0.1.7</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

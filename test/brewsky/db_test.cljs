@@ -7,4 +7,4 @@
   (testing "initial state of app-db"
     (is (=
          (s/conform ::db/app-db db/app-db)
-         {:scene-stack [:new-brew-menu]}))))
+         {:scene-stack [:recipes]}))))
