@@ -66,8 +66,8 @@
   [ui/view {:style (:container styles {})}
    status-bar
    (title-bar/component {:title "New Brew"})
-   (button "Extract Beer" :recipes-create :extract-beer-button)
-   (button "All Grain Beer" :recipes-create :all-grains-beer-button)
-   (button "Custom Beer" :recipes-create :custom-beer-button)])
+   (button "Extract Beer" :recipes-create-title-style :extract-beer-button)
+   (button "All Grain Beer" :recipes-create-title-style :all-grains-beer-button)
+   (button "Custom Beer" :recipes-create-title-style :custom-beer-button)])
 
 (defn component [] container)

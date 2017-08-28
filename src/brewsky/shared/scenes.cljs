@@ -1,6 +1,8 @@
 (ns brewsky.shared.scenes
   (:require [re-frame.core :refer [subscribe]]
+            [brewsky.shared.scenes.colors :as colors]
             [brewsky.shared.scenes.recipes.create :as recipes-create]
+            [brewsky.shared.scenes.recipes.create.title-style :as recipes-create-title-style]
             [brewsky.shared.scenes.recipes.list :as recipes-list]
             [brewsky.shared.subs.navigation :as navigation]))
 
@@ -10,7 +12,9 @@
 
 (def scenes
   "All of the scenes we can render as top-level scenes."
-  {:recipes-create recipes-create/component
+  {:colors colors/component
+   :recipes-create recipes-create/component
+   :recipes-create-title-style recipes-create-title-style/component
    :recipes-list recipes-list/component})
 
 (defn scene?
