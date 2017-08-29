@@ -1,7 +1,7 @@
 (ns brewsky.shared.scenes.recipes.create
   (:require [brewsky.shared.ui :as ui]
             [brewsky.shared.events.navigation :as navigation]
-            [brewsky.shared.components.title-bar :as title-bar]))
+            [brewsky.shared.components.titled-container :as titled-container]))
 
 (def styles
   {:all-grains-beer-button
@@ -40,34 +40,32 @@
     :color (:white ui/colors)
     :font-size 22}})
 
-(def status-bar
-  [ui/status-bar {:bar-style "light-content"}])
+(defn hero-button-style
+  [style-key]
+  (merge
+    (:new-brew-button styles {})
+    (style-key styles {})))
 
-(defn new-brew-button
-  [{:keys [title on-press style-key]}]
-  (let [default-style (:new-brew-button styles {})
-        override-style (style-key styles {})
-        style (merge default-style override-style)
-        props {:style style :on-press on-press}]
+(defn hero-button-props
+  [style]
+  {:style style
+   :on-press #(navigation/dispatch->push-scene :recipes-create-title-style)})
+
+(defn hero-button
+  [title style-key]
+  (let [style (hero-button-style style-key)
+        button-props (hero-button-props style)]
     [ui/button
-     props
+     button-props
      [ui/view {:style (:new-brew-button-inner-view styles {})}
       [ui/text {:style (:new-brew-button-inner-view-plus styles {})} "+"]
       [ui/text {:style (:new-brew-button-inner-view-title styles {})} title]]]))
 
-(defn button
-  [title push-scene-key style-key]
-  (new-brew-button
-    {:title title
-     :on-press #(navigation/dispatch->push-scene push-scene-key)
-     :style-key style-key}))
-
-(def container
-  [ui/view {:style (:container styles {})}
-   status-bar
-   (title-bar/component {:title "New Brew"})
-   (button "Extract Beer" :recipes-create-title-style :extract-beer-button)
-   (button "All Grain Beer" :recipes-create-title-style :all-grains-beer-button)
-   (button "Custom Beer" :recipes-create-title-style :custom-beer-button)])
-
-(defn component [] container)
+(defn component
+  "A picker scene which presents three main buttons to create a new recipe"
+  []
+  [titled-container/component
+    {:title "New Brew"}
+    [(hero-button "Extract Beer" :extract-beer-button)
+     (hero-button "All Grain Beer" :all-grains-beer-button)
+     (hero-button "Custom Beer" :custom-beer-button)]])
