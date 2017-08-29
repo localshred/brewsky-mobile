@@ -41,7 +41,7 @@ $ make repl PLATFORM=android
 Start react-native:
 
 ```shell
-$ make start
+$ make packager
 ```
 
 ### Terminal 3: XCode Build, Run in Simulator
@@ -49,9 +49,11 @@ $ make start
 To compile the XCode project and run the simulator:
 
 ```shell
-$ make run
+$ make
 # or
-$ make run PLATFORM=android
+$ make compile
+# or
+$ make compile PLATFORM=android
 ```
 
 ## Running tests

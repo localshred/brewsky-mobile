@@ -1,3 +1,4 @@
+.DEFAULT_GOAL := compile
 PLATFORM ?= ios
 
 # Install a component via yarn and tell re-natal about it
@@ -17,14 +18,14 @@ repl:
 		&& rlwrap lein figwheel ${PLATFORM}
 
 # Start the react-native webpack bundler
-start:
+packager:
 	react-native start
 
 # Compile the project with xcode and run on the simulator
-run:
+compile:
 	react-native run-${PLATFORM}
 
 test:
 	lein doo node test auto
 
-.PHONY: install link repl start run test
+.PHONY: install link repl packager compile test
