@@ -32,12 +32,12 @@
    :new-brew-button-inner-view-plus
    {:margin-top -30
     :text-align "center"
-    :color (:white ui/colors)
+    :color (:athens-gray ui/colors)
     :font-size 60}
 
    :new-brew-button-inner-view-title
    {:text-align "center"
-    :color (:white ui/colors)
+    :color (:athens-gray ui/colors)
     :font-size 22}})
 
 (defn hero-button-style
