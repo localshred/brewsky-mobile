@@ -41,10 +41,10 @@
     :width 75}})
 
 (defn merge-styles
-  [styles-key overrides]
+  [styles-key style-overrides]
   (merge
     (styles-key styles {})
-    (or overrides {})))
+    (or style-overrides {})))
 
 (defn button
   [default-text
@@ -84,7 +84,7 @@
 
 (defn component
   [props]
-  (let [view-styles (merge-styles :component (:style props))
+  (let [view-styles (merge-styles :component (:style props {}))
         view-props {:style view-styles}]
     [ui/view
      view-props
