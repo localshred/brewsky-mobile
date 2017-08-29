@@ -4,6 +4,7 @@
 
 (def styles
   {:container {:flex 1
+               :margin-top 25
                :justify-content "flex-start"}
 
    :scroll-view {:flex 10}
@@ -36,8 +37,8 @@
     [ui/button
      {:style (:back-button styles {})
       :text-style (:back-button-text-style styles {})
-      :on-press #(navigation/dispatch->replace-scenes :recipes-list)}
-     "Recipes"]
+      :on-press #(navigation/dispatch->pop-scene)}
+     "Go Back"]
     (block (:cod-gray ui/colors) "cod-gray")
     (block (:shark ui/colors) "shark")
     (block (:abbey ui/colors) "abbey")
