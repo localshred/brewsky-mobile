@@ -22,7 +22,8 @@
   "Container component for this scene"
   []
   [titled-container/component
-   {:title-bar {:title "New Brew"}}
+   {:title-bar {:title "New Brew"}
+    :next-scene-button {:on-press #(navigation/dispatch->push-scene :colors)}}
    [[ui/view
      {:style (:center-panel styles {})}
      [label/component {}  "What's the name of your beer?"]

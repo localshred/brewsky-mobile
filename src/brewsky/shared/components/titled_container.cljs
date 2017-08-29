@@ -1,6 +1,9 @@
 (ns brewsky.shared.components.titled-container
-  (:require [brewsky.shared.ui :as ui]
-            [brewsky.shared.components.title-bar :as title-bar]))
+  (:require
+    [brewsky.shared.components.title-bar :as title-bar]
+    [brewsky.shared.events.navigation :as navigation]
+    [brewsky.shared.ui :as ui]
+    ))
 
 (def styles
   {:container
@@ -15,9 +18,32 @@
     :width "100%"
     :padding 10}
 
+   :next-scene-button
+   {:background-color (:dodger-blue ui/colors)
+    :border-radius 0
+    :flex 2
+    :height "100%"
+    :margin 0
+    :padding 0
+    }
+
+   :next-scene-button-text
+   {:color (:athens-gray ui/colors)
+    }
+
    :title-bar
    {:flex 1}
    })
+
+(def next-scene-button-default-props
+  {:style (:next-scene-button styles {})
+   :text-style (:next-scene-button-text styles {})})
+
+(defn next-scene-button
+  ""
+  [props text]
+  (let [merged-props (merge next-scene-button-default-props props)]
+    [ui/button merged-props text]))
 
 (defn component
   "A component that has a title with an optional menu button and an optional right button"
@@ -37,4 +63,7 @@
      (title-bar/component title-bar-props)
      (into
        [ui/view {:style children-panel-style}]
-       children)]))
+       children)
+     [next-scene-button
+      (:next-scene-button props {})
+      "Next"]]))
