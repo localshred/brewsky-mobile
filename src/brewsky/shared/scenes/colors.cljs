@@ -28,8 +28,9 @@
    ((:color-block-view styles) hex-color)
    [ui/text {:style (:color-block-text styles)} (str color-name " " hex-color)]])
 
-(def container
+(defn component
   "Container component for this scene"
+  []
   [ui/view {:style (:container styles {})}
    [ui/scroll-view {:style (:scroll-view styles {})}
     [ui/button
@@ -53,5 +54,3 @@
     (block (:athens-gray ui/colors) "athens-gray")
     (block (:white ui/colors) "white")
     ]])
-
-(defn component [] container)

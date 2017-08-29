@@ -1,16 +1,11 @@
 (ns brewsky.shared.scenes.recipes.create.title-style
   (:require [brewsky.shared.ui :as ui]
-            [brewsky.shared.events.navigation :as navigation]))
+            [brewsky.shared.events.navigation :as navigation]
+            [brewsky.shared.components.titled-container :as titled-container]))
 
 (def styles
-  {:container
-   {:align-items "center"
-    :background-color (:shark ui/colors)
-    :flex 1
-    :justify-content "center"}
-
+  {:container {}
    :back-button {}
-
    :title {}})
 
 (defn back-button
@@ -28,10 +23,10 @@
     {:style (:title styles {})}
     text])
 
-(def container
+(defn component
   "Container component for this scene"
-  [ui/view {:style (:container styles {})}
-    (back-button)
-    (title "Scene: brewsky.shared.scenes.recipes.create.title-style")])
-
-(defn component [] container)
+  []
+  [titled-container/component
+   {:title "New Brew" :style (:container styles {})}
+   [(back-button)
+    (title "Scene: brewsky.shared.scenes.recipes.create.title-style")]])

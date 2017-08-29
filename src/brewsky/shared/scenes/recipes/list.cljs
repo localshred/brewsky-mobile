@@ -32,10 +32,9 @@
     {:style (:title styles {})}
     text])
 
-(def container
+(defn component
   "Container component for this scene"
+  []
   [ui/view {:style (:container styles {})}
    (title "Recipes")
    (add-recipe-button)])
-
-(defn component [] container)
