@@ -6,12 +6,13 @@
 
 (def styles
   {:component
-   {:flex 1
+   {:background-color (:shark ui/colors)
+    :flex 1
     :flex-direction "row"
     :height 70
     :justify-content "center"
-    :margin-top 20
     :margin-bottom 20
+    :margin-top 20
     }
 
    :button-right
@@ -30,12 +31,14 @@
 
    :button-left-text-style
    {:color (:oslo-gray colors)
-    :font-size 25}
+    :font-size 20
+    :padding-top 8}
 
    :title
-   {:color (:oslo-gray colors)
+   {:color (:athens-gray colors)
     :flex 10
     :font-size 20
+    :font-weight "400"
     :padding-top 15
     :text-align "center"
     :width 75}})
