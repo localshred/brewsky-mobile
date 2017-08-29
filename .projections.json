@@ -12,7 +12,7 @@
     "dispatch": "lein test {dot|hyphenate}-test",
     "template": [
       "(ns {dot|hyphenate}",
-      "  (:require))"
+      "  (:require []))"
     ]
   },
 
