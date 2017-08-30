@@ -41,30 +41,25 @@
    :text-style (:next-scene-button-text styles {})})
 
 (defn next-scene-button
-  ""
+  "Button to advance to the next scene"
   [props text]
   (let [merged-props (merge next-scene-button-default-props props)]
     [ui/button merged-props text]))
 
+(defn form-panel
+  "Component to wrap the form components"
+  [props children]
+  (let [style (merge (:children-panel styles {}) (:style props {}))]
+    (into [ui/view {:style style}] children)))
+
 (defn component
   "A component that has a title with an optional menu button and an optional right button"
   [props children]
-  (let [title-bar-props (merge
-                          (:title-bar props {})
-                          (:title-bar styles {}))
-
-        container-style (:container styles {})
-
-        children-panel-style (merge
-                               (:children-panel styles {})
-                               (:style props {}))]
+  (let [title-bar-props (merge (:title-bar props {}) (:title-bar styles {}))
+        container-style (:container styles {})]
     [ui/view
      {:style container-style}
      [ui/status-bar {:bar-style "light-content"}]
-     (title-bar/component title-bar-props)
-     (into
-       [ui/view {:style children-panel-style}]
-       children)
-     [next-scene-button
-      (:next-scene-button props {})
-      "Next"]]))
+     [title-bar/component title-bar-props]
+     [form-panel (:style props {}) children]
+     [next-scene-button (:next-scene-button props {}) "Next"]]))
