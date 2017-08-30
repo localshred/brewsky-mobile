@@ -4,11 +4,7 @@
 (def styles
   {:label
    {:color (:abbey ui/colors)
-    :font-size 20
-    :margin-top 25
-    :margin-bottom 25
-    :margin-left 10
-    :margin-right 10}})
+    :font-size 20}})
 
 (defn component
   "A generic label"
