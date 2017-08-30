@@ -1,9 +1,11 @@
 (ns brewsky.events
   (:require
-   [re-frame.core :refer [reg-event-db after]]
-   [clojure.spec.alpha :as s]
    [brewsky.db :as db :refer [app-db]]
-   [brewsky.shared.events.navigation :as navigation]))
+   [brewsky.shared.events.navigation :as navigation]
+   [brewsky.shared.events.recipe-create :as recipe-create]
+   [clojure.spec.alpha :as s]
+   [re-frame.core :refer [reg-event-db after]]
+   ))
 
 ;; -- Interceptors ------------------------------------------------------------
 ;;
@@ -48,3 +50,5 @@
 (reg-event-db :navigation/pop-scene validate-spec navigation/pop-scene)
 (reg-event-db :navigation/push-scene validate-spec navigation/push-scene)
 (reg-event-db :navigation/replace-scenes validate-spec navigation/replace-scenes)
+(reg-event-db :recipe-create/title-changed validate-spec recipe-create/title-changed)
+(reg-event-db :recipe-create/style-chosen validate-spec recipe-create/style-chosen)
