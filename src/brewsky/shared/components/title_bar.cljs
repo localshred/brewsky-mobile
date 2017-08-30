@@ -66,7 +66,7 @@
 (def right-button
   (partial
     button
-    "🎨"
+    "+"
     :button-right
     :button-right-text-style
     #(navigation/dispatch->push-scene :colors)))

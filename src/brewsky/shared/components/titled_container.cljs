@@ -23,7 +23,8 @@
     :border-radius 0
     :flex 2
     :height "100%"
-    :margin 0
+    :margin -3
+    :margin-bottom -3
     :padding 0
     }
 
