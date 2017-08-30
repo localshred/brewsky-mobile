@@ -37,7 +37,12 @@
 (defn initialize-db
   "Returns the initial app-db. Called by src/<platform>/core.js synchronously."
   [_ _]
-  app-db)
+  (let [conform-explanation (s/explain-str ::db/app-db app-db)]
+    (do
+      (when-not
+        (= "Success!\n" conform-explanation)
+        (.error js/console conform-explanation))
+      app-db)))
 
 (reg-event-db :initialize-db validate-spec initialize-db)
 (reg-event-db :navigation/pop-scene validate-spec navigation/pop-scene)

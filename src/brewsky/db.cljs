@@ -89,9 +89,30 @@
 ;                             ]))
 ; (s/def ::brews (s/* ::brew))
 
+(s/def ::guid uuid?)
+(s/def ::type #{:extract :custom :kit})
+(s/def ::name string?)
+(s/def ::style #{"Pale Ale" "IPA"})
+
+(s/def ::recipe (s/keys :req-un [::guid
+                                 ::type
+                                 ::name
+                                 ::style]))
+
+(s/def ::recipe-partial (s/keys :opt-un [::guid
+                                         ::type
+                                         ::name
+                                         ::style]))
+
+(s/def ::recipes (s/map-of ::guid ::recipe))
+
 (s/def ::scene-stack (s/+ scene?))
-(s/def ::app-db (s/keys :req-un [::scene-stack]))
+(s/def ::app-db (s/keys :req-un [::scene-stack
+                                 ::recipes
+                                 ::recipe-partial]))
 
 ;; Initial State
 (def app-db
-  {:scene-stack [default-scene]})
+  {:scene-stack [default-scene]
+   :recipes {}
+   :recipe-partial {}})
