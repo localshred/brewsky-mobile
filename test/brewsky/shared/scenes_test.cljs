@@ -4,7 +4,10 @@
 
 (deftest test-scene?
   (are [scene expected] (= expected (scenes/scene? scene))
-       :recipes-create
+       :colors true
+       :recipes-create true
+       :recipes-create-title-style true
+       :recipes-list true
        :something-bogus false
        123 false
        false false))
