@@ -66,7 +66,8 @@
   []
   [titled-container/component
     {:style {:padding 0}
-     :title-bar {:title "New Brew"}}
+     :title-bar {:title "New Brew"}
+     :disable-next-button true}
     [(hero-button "Extract Brew" :extract-beer-button)
      (hero-button "All Grain Brew Kit" :all-grains-beer-button)
      (hero-button "Custom All Grain Brew" :custom-beer-button)]])

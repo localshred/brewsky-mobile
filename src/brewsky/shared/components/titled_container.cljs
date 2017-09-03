@@ -15,8 +15,7 @@
    :children-panel
    {:background-color (:athens-gray ui/colors)
     :flex 15
-    :width "100%"
-    :padding 10}
+    :width "100%"}
 
    :next-scene-button
    {:background-color (:dodger-blue ui/colors)
@@ -56,10 +55,15 @@
   "A component that has a title with an optional menu button and an optional right button"
   [props children]
   (let [title-bar-props (merge (:title-bar props {}) (:title-bar styles {}))
-        container-style (:container styles {})]
+        container-style (:container styles {})
+        next-button (if-not (:disable-next-button props false)
+                      [next-scene-button (:next-scene-button props {}) "Next"]
+                      nil)
+        ]
     [ui/view
      {:style container-style}
      [ui/status-bar {:bar-style "light-content"}]
      [title-bar/component title-bar-props]
      [form-panel (:style props {}) children]
-     [next-scene-button (:next-scene-button props {}) "Next"]]))
+     next-button
+     ]))
