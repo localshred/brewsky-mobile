@@ -2,9 +2,12 @@
   (:require [reagent.core :as r]
             [re-frame.core :refer [clear-subscription-cache!]]
             [brewsky.ios.core :as core]
-            [figwheel.client :as figwheel :include-macros true]))
+            [figwheel.client :as figwheel :include-macros true]
+            [re-frisk-remote.core :as rr]))
 
- (enable-console-print!)
+(enable-console-print!)
+
+(rr/enable-re-frisk-remote! {:host ":4567"})
 
 (def cnt (r/atom 0))
 (defn reloader [] @cnt [core/app-root])

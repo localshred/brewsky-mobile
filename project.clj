@@ -8,14 +8,17 @@
                  [reagent "0.6.1" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server]]
                  [re-frame "0.9.2"]]
   :plugins [[lein-cljsbuild "1.1.4"]
-            [lein-figwheel "0.5.10"]]
+            [lein-figwheel "0.5.10"]
+            [lein-re-frisk  "0.5.0"]]
   :clean-targets ["target/" "index.ios.js" "index.android.js" #_($PLATFORM_CLEAN$)]
   :aliases {"prod-build" ^{:doc "Recompile code with prod profile."}
             ["do" "clean"
              ["with-profile" "prod" "cljsbuild" "once"]]}
   :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.10"]
                                   [com.cemerick/piggieback "0.2.1"]
-                                  [lein-doo  "0.1.7"]]
+                                  [lein-doo  "0.1.7"]
+                                  [re-frisk-remote "0.5.0"]
+                                  [re-frisk-sidecar "0.5.0"]]
                    :source-paths ["src" "env/dev"]
                    :plugins [[lein-doo "0.1.7"]]
                    :cljsbuild    {:test-commands {"test" ["lein" "doo" "node" "test" "once"]}
