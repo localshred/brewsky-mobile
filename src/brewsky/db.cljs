@@ -90,7 +90,7 @@
 ; (s/def ::brews (s/* ::brew))
 
 (s/def ::guid uuid?)
-(s/def ::type #{:extract :custom :kit})
+(s/def ::type #{:extract :custom-all-grain :kit-all-grain})
 (s/def ::name string?)
 (s/def ::style #{"Pale Ale" "IPA"})
 

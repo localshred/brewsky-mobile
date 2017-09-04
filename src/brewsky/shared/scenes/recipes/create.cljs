@@ -1,6 +1,7 @@
 (ns brewsky.shared.scenes.recipes.create
   (:require [brewsky.shared.ui :as ui]
             [brewsky.shared.events.navigation :as navigation]
+            [brewsky.shared.events.recipes.create :as recipes-create]
             [brewsky.shared.components.titled-container :as titled-container]))
 
 (def styles
@@ -47,14 +48,16 @@
     (style-key styles {})))
 
 (defn hero-button-props
-  [style]
+  [recipe-type style]
   {:style style
-   :on-press #(navigation/dispatch->push-scene :recipes-create-title-style)})
+   :on-press #(do
+                (recipes-create/dispatch->create-recipe-partial recipe-type)
+                (navigation/dispatch->push-scene :recipes-create-title-style))})
 
 (defn hero-button
-  [title style-key]
+  [title recipe-type style-key]
   (let [style (hero-button-style style-key)
-        button-props (hero-button-props style)]
+        button-props (hero-button-props recipe-type style)]
     [ui/button
      button-props
      [ui/view {:style (:new-brew-button-inner-view styles {})}
@@ -68,6 +71,6 @@
     {:style {:padding 0}
      :title-bar {:title "New Brew"}
      :disable-next-button true}
-    [(hero-button "Extract Brew" :extract-beer-button)
-     (hero-button "All Grain Brew Kit" :all-grains-beer-button)
-     (hero-button "Custom All Grain Brew" :custom-beer-button)]])
+    [[hero-button "Extract Brew" :extract :extract-beer-button]
+     [hero-button "All Grain Brew Kit" :kit-all-grain :all-grains-beer-button]
+     [hero-button "Custom All Grain Brew" :custom-all-grain :custom-beer-button]]])

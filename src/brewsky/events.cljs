@@ -2,7 +2,7 @@
   (:require
    [brewsky.db :as db :refer [app-db]]
    [brewsky.shared.events.navigation :as navigation]
-   [brewsky.shared.events.recipe-create :as recipe-create]
+   [brewsky.shared.events.recipes.create :as recipes-create]
    [clojure.spec.alpha :as s]
    [re-frame.core :refer [reg-event-db after]]
    ))
@@ -50,5 +50,6 @@
 (reg-event-db :navigation/pop-scene validate-spec navigation/pop-scene)
 (reg-event-db :navigation/push-scene validate-spec navigation/push-scene)
 (reg-event-db :navigation/replace-scenes validate-spec navigation/replace-scenes)
-(reg-event-db :recipe-create/title-changed validate-spec recipe-create/title-changed)
-(reg-event-db :recipe-create/style-chosen validate-spec recipe-create/style-chosen)
+(reg-event-db :recipes-create/create-recipe-partial validate-spec recipes-create/create-recipe-partial)
+(reg-event-db :recipes-create/title-changed validate-spec recipes-create/title-changed)
+(reg-event-db :recipes-create/style-changed validate-spec recipes-create/style-changed)
