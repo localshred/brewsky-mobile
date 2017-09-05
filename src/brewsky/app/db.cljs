@@ -2,14 +2,14 @@
   (:require
     [clojure.spec.alpha :as s]
     [brewsky.app.scenes :refer [default-scene scene?]]
+    [brewsky.app.types :as types]
     ))
 
 ;; Specification
 (defn gte-zero? [pred] (s/and pred #(>= % 0)))
-(def granularity? #{:pound :ounce :kilo :gram :milliliter})
 (def percentage? #((and (>= 0 %) (<= 100))))
 
-; (s/def ::recipe-amount-granularity granularity?)
+; (s/def ::recipe-amount-granularity granularities)
 ; (s/def ::recipe-amount-value (gte-zero? double?))
 ; (s/def ::recipe-amount (s/cat :value ::recipe-amount-value
 ;                               :granularity ::recipe-amount-granularity))
@@ -92,9 +92,9 @@
 ; (s/def ::brews (s/* ::brew))
 
 (s/def ::guid uuid?)
-(s/def ::type #{:extract :custom-all-grain :kit-all-grain})
+(s/def ::type types/recipe-types)
 (s/def ::name string?)
-(s/def ::style #{"Pale Ale" "IPA"})
+(s/def ::style types/recipe-styles)
 
 (s/def ::recipe (s/keys :req-un [::guid
                                  ::type

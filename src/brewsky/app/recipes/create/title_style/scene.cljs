@@ -1,5 +1,6 @@
 (ns brewsky.app.recipes.create.title-style.scene
   (:require
+    [brewsky.app.types :as types]
     [brewsky.app.navigation.events :as navigation]
     [brewsky.app.recipes.create.events :as events]
     [brewsky.app.recipes.create.subs :as subs]
@@ -16,14 +17,11 @@
    [label/component {:style (:label styles {})} (:label props)]
    (:input props)])
 
-(defn text-input
-  "" 
-  [props]
-  (let [style (merge
-                (:text-input styles {})
-                (:style props {}))
-        input-props (merge props {:style style})]
-    [ui/input input-props]))
+(def recipe-style-picker-items
+  "Mapped list of Picker.Item elements for each recipe style"
+  (map
+    (fn [style] [ui/picker-item {:label style :value style}])
+    types/recipe-styles))
 
 (defn component
   "Container component for this scene"
@@ -35,13 +33,19 @@
      [[ui/view
        {:style (:center-panel styles {})}
        [labeled-input {:label "What's the name of your beer?"
-                       :input [text-input {:default-value (:title recipe-partial "")
-                                           :on-focus #(.log js/console "focused style")
-                                           :on-change-text #(events/dispatch->title-changed %)}]}]
+                       :input [ui/input {:default-value (:title recipe-partial "")
+                                         :on-change-text #(events/dispatch->title-changed %)
+                                         :style (:text-input styles {})}]}]
 
        [labeled-input {:label "What style of beer?"
-                       :input [text-input {:default-value (:style recipe-partial "")
-                                           :on-focus #(.log js/console "focused style")
-                                           :on-change-text #(events/dispatch->style-changed %)}]}]
+                       :input (into [ui/picker
+                                     {:mode "dropdown"
+                                      :on-focus #(.log js/console "focused style")
+                                      :on-value-change #(events/dispatch->style-changed %)
+                                      :selected-value (:style recipe-partial "")
+                                      :style {}}
+                                     ]
+                                    recipe-style-picker-items)
+                       }]
        ]]
      ]))
