@@ -13,12 +13,12 @@
 (defn dispatch->title-changed
   "Dispatch a :recipes-create/title-changed event with the changed title."
   [title]
-  (dispatch [:recipes-create/title title]))
+  (dispatch [:recipes-create/title-changed title]))
 
 (defn dispatch->style-changed
   "Dispatch a :recipes-create/style-changed event with the changed title."
-  [title]
-  (dispatch [:recipes-create/title title]))
+  [style]
+  (dispatch [:recipes-create/style-changed style]))
 
 ;; Event Handlers
 ;; IMPORTANT!!! Don't forget to map events in brewsky/src/events.cljs

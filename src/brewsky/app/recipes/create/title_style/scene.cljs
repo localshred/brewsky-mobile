@@ -19,8 +19,11 @@
 (defn text-input
   "" 
   [props]
-  [ui/input {:style (:text-input styles {})
-             :value (:value props)}])
+  (let [style (merge
+                (:text-input styles {})
+                (:style props {}))
+        input-props (merge props {:style style})]
+    [ui/input input-props]))
 
 (defn component
   "Container component for this scene"
