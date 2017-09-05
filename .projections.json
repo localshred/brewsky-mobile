@@ -12,17 +12,19 @@
     "dispatch": "lein test {dot|hyphenate}-test",
     "template": [
       "(ns {dot|hyphenate}",
-      "  (:require []))"
+      "  (:require",
+      "    []",
+      "    ))"
     ]
   },
 
-  "src/brewsky/shared/events/*.cljs": {
+  "src/brewsky/app/*/events.cljs": {
     "type": "event",
     "template": [
-      "(ns brewsky.shared.events.{dot|hyphenate}",
-      "  (:require [re-frame.core :refer [dispatch]]))",
-      "",
-      ";; IMPORTANT!!! DELETE ME - Don't forget to map these events in brewsky/src/events.cljs",
+      "(ns brewsky.app.{dot|hyphenate}.events",
+      "  (:require",
+      "    [re-frame.core :refer [dispatch]]",
+      "    ))",
       "",
       ";; Event Dispatchers",
       "",
@@ -33,6 +35,8 @@
       "",
       ";; Event Handlers",
       "",
+      ";; IMPORTANT!!! Don't forget to map these events in brewsky/src/app/events.cljs",
+      "",
       "(defn store-derived-data",
       "  \"Handles a :{basename|hyphenate}/store-derived-data event.",
       "  __ADDITIONAL DESCRIPTION__\"",
@@ -42,25 +46,36 @@
     ]
   },
 
-  "src/brewsky/shared/scenes/*.cljs": {
-    "type": "scene",
+  "src/brewsky/app/*/styles.cljs": {
+    "type": "styles",
     "template": [
-      "(ns brewsky.shared.scenes.{dot|hyphenate}",
-      "  (:require [brewsky.shared.ui :as ui]",
-      "            [brewsky.shared.events.navigation :as navigation]))",
-      "",
-      ";; IMPORTANT!!! DELETE ME - Don't forget to map this scene in brewsky/src/shared/scenes.cljs",
+      "(ns brewsky.app.{dot|hyphenate}.styles",
+      "  (:require",
+      "    [brewsky.app.ui :refer [colors]]",
+      "    ))",
       "",
       "(def styles",
-      "  {:container",
-      "   {:align-items \"center\"",
-      "    :background-color (:shark ui/colors)",
-      "    :flex 1",
-      "    :justify-content \"center\"}",
+      "  {",
+      "  })"
+    ]
+  },
+
+  "src/brewsky/app/*/scene.cljs": {
+    "type": "scene",
+    "template": [
+      "(ns brewsky.app.scenes.{dot|hyphenate}.scene",
+      "  (:require",
+      "    [brewsky.app.{dot|hyphenate}.events :refer [dispatch->REPLACE_ME]]",
+      "    [brewsky.app.{dot|hyphenate}.styles :refer [styles]]",
+      "    [brewsky.app.{dot|hyphenate}.subs :refer [subscription->REPLACE_ME]]",
+      "    [brewsky.app.navigation.events :as navigation]",
+      "    [brewsky.app.ui :as ui]",
+      "    [brewsky.app.ui.components.label :as label]",
+      "    [brewsky.app.ui.components.titled-container :as titled-container]",
+      "    ))",
       "",
-      "   :back-button {open}{close}",
+      ";; IMPORTANT!!! DELETE ME - Don't forget to map this scene in brewsky/src/app/scenes.cljs",
       "",
-      "   :title {open}{close}})",
       "",
       "(defn back-button",
       "  \"Navigate to the prior screen\"",
@@ -77,23 +92,29 @@
       "    {:style (:title styles {open}{close})}",
       "    text])",
       "",
-      "(def container",
-      "  \"Container component for this scene\"",
-      "  [ui/view {:style (:container styles {open}{close})}",
-      "    (back-button)",
-      "    (title \"Scene: brewsky.shared.scenes.{dot|hyphenate}\")])",
-      "",
-      "(defn component [] container)"
+      "(defn component",
+      "  \"TODO: Scene Description\"",
+      "  []",
+      "  [titled-container/component",
+      "   {:title-bar {:title \"Scene Title\"}",
+      "    :next-scene-button {:on-press #(navigation/dispatch->push-scene :colors)}}",
+      "   [[ui/view",
+      "     {:style (:center-panel styles {})}",
+      "     [label/component",
+      "      {:style (:label styles {})}",
+      "      \"Scene: brewsky.app.scenes.{dot|hyphenate}\"]]]",
+      "   ]",
+      "  )"
     ]
   },
 
-  "src/brewsky/shared/subs/*.cljs": {
+  "src/brewsky/app/*/subs.cljs": {
     "type": "sub",
     "template": [
-      "(ns brewsky.shared.subs.{dot|hyphenate}",
-      "  (:require [re-frame.core :refer [subscribe]]))",
-      "",
-      ";; IMPORTANT!!! DELETE ME - Don't forget to map these subscribers in brewsky/src/subs.cljs",
+      "(ns brewsky.app.{dot|hyphenate}.subs",
+      "  (:require",
+      "    [re-frame.core :refer [subscribe]]",
+      "    ))",
       "",
       ";; Subscriptions",
       "",
@@ -104,11 +125,33 @@
       "",
       ";; Subscription Handlers",
       "",
+      ";; IMPORTANT!!! Don't forget to map these subscribers in brewsky/src/app/subs.cljs",
+      "",
       "(defn some-data",
       "  \"__QUERY DESCRIPTION__\"",
       "  [db _]",
       "  (:some-data db))",
       ""
+    ]
+  },
+
+  "src/brewsky/app/ui/components/*.cljs": {
+    "type": "sub",
+    "template": [
+      "(ns brewsky.app.ui.components.{dot|hyphenate}.subs",
+      "  (:require",
+      "    [brewsky.app.ui :as ui]",
+      "    ))",
+      "",
+      "(def styles",
+      "  {:label",
+      "   {:color (:abbey ui/colors)",
+      "    :font-size 20}})",
+      "",
+      "(defn component",
+      "  \"TODO: Component description\"",
+      "  [props text]",
+      "  [ui/text {} \"Now What\"])"
     ]
   },
 
@@ -119,8 +162,10 @@
     "dispatch": "lein test {dot|hyphenate}-test",
     "template": [
       "(ns {dot|hyphenate}-test",
-      "  (:require [cljs.test :refer [deftest is are testing]]",
-      "            [{dot|hyphenate} :as {basename|hyphenate}]))",
+      "  (:require",
+      "    [cljs.test :refer [deftest is are testing]]",
+      "    [{dot|hyphenate} :as {basename|hyphenate}]",
+      "    ))",
       "",
       ";; IMPORTANT!!! DELETE ME - Don't forget to :require these tests in test/runners/doo.cljs",
       "",
