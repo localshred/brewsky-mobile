@@ -1,33 +1,13 @@
 (ns brewsky.app.recipes.create.title-style.scene
   (:require
     [brewsky.app.navigation.events :as navigation]
+    [brewsky.app.recipes.create.events :as events]
+    [brewsky.app.recipes.create.subs :as subs]
+    [brewsky.app.recipes.create.title-style.styles :refer [styles]]
     [brewsky.app.ui :as ui]
-    [brewsky.app.recipes.create.events :refer [dispatch->style-changed
-                                               dispatch->title-changed]]
-    [brewsky.app.recipes.create.subs :refer [subscription->recipe-partial]]
-    [brewsky.app.ui.components.label :as label]
-    [brewsky.app.ui.components.titled-container :as titled-container]
+    [brewsky.app.ui.components.label.component :as label]
+    [brewsky.app.ui.components.titled-container.component :as titled-container]
     ))
-
-(def styles
-  {:center-panel
-   {:justify-content "center"
-    :height "100%"}
-
-   :labeled-input
-   {:margin 10
-    :padding 10
-    }
-
-   :label
-   {:margin-bottom 25
-    :margin-top 25}
-
-   :text-input
-   {:border-bottom-color (:oslo-gray ui/colors)
-    :border-bottom-width 1
-    :color (:abbey ui/colors)
-    :font-size 20}})
 
 (defn labeled-input
   ""

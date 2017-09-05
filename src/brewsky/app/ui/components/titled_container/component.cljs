@@ -1,39 +1,10 @@
-(ns brewsky.app.ui.components.titled-container
+(ns brewsky.app.ui.components.titled-container.component
   (:require
     [brewsky.app.navigation.events :as navigation]
     [brewsky.app.ui :as ui]
-    [brewsky.app.ui.components.title-bar :as title-bar]
+    [brewsky.app.ui.components.title-bar.component :as title-bar]
+    [brewsky.app.ui.components.titled-container.styles :refer [styles]]
     ))
-
-(def styles
-  {:container
-   {:align-items "center"
-    :background-color (:shark ui/colors)
-    :flex 1
-    :justify-content "center"}
-
-   :children-panel
-   {:background-color (:athens-gray ui/colors)
-    :flex 15
-    :width "100%"}
-
-   :next-scene-button
-   {:background-color (:dodger-blue ui/colors)
-    :border-radius 0
-    :flex 2
-    :height "100%"
-    :margin -3
-    :margin-bottom -3
-    :padding 0
-    }
-
-   :next-scene-button-text
-   {:color (:athens-gray ui/colors)
-    }
-
-   :title-bar
-   {:flex 1}
-   })
 
 (def next-scene-button-default-props
   {:style (:next-scene-button styles {})

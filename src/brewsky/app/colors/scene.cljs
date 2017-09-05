@@ -1,29 +1,9 @@
-(ns brewsky.app.ui.colors.scene
+(ns brewsky.app.colors.scene
   (:require
-    [brewsky.app.ui :as ui]
+    [brewsky.app.colors.styles :refer [styles]]
     [brewsky.app.navigation.events :as navigation]
+    [brewsky.app.ui :as ui]
     ))
-
-(def styles
-  {:container {:flex 1
-               :margin-top 25
-               :justify-content "flex-start"}
-
-   :scroll-view {:flex 10}
-
-   :color-block-text {:padding 5
-                      :background-color "#fff"
-                      :text-align "center"
-                      :font-weight "bold"
-                      :opacity 0.5
-                      :color "#000"}
-
-   :color-block-view (fn
-                       [hex-color]
-                       {:background-color hex-color
-                        :padding 20
-                        :text-align :center})
-   })
 
 (defn block
   [hex-color color-name]

@@ -1,12 +1,8 @@
-(ns brewsky.app.ui.components.label
+(ns brewsky.app.ui.components.label.component
   (:require
     [brewsky.app.ui :as ui]
+    [brewsky.app.ui.components.label.styles :refer [styles]]
     ))
-
-(def styles
-  {:label
-   {:color (:abbey ui/colors)
-    :font-size 20}})
 
 (defn component
   "A generic label"

@@ -4,7 +4,7 @@
     [brewsky.app.recipes.create.scene :as recipes-create]
     [brewsky.app.recipes.create.title-style.scene :as recipes-create-title-style]
     [brewsky.app.recipes.list.scene :as recipes-list]
-    [brewsky.app.ui.colors.scene :as colors]
+    [brewsky.app.colors.scene :as colors]
     [re-frame.core :refer [subscribe]]
     ))
 

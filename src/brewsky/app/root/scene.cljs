@@ -1,9 +1,6 @@
 (ns brewsky.app.root.scene
   (:require
     [reagent.core :as r]
-    ; [brewsky.app.db] ; preload
-    ; [brewsky.app.events] ; preload
-    ; [brewsky.app.subs] ; preload
     [brewsky.app.scenes :as scenes]
     ))
 

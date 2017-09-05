@@ -1,22 +1,9 @@
 (ns brewsky.app.recipes.list.scene
   (:require
     [brewsky.app.navigation.events :as navigation]
+    [brewsky.app.recipes.list.styles :refer [styles]]
     [brewsky.app.ui :as ui]
     ))
-
-(def styles
-  {:container
-   {:align-items "center"
-    :background-color (:shark ui/colors)
-    :flex 1
-    :justify-content "center"}
-
-   :add-brew-button {}
-   :add-brew-button-text-style {:color (:white ui/colors)}
-
-   :title {:color (:white ui/colors)
-           :font-size 35
-           :margin-bottom 50}})
 
 (defn add-recipe-button
   "Render a button which will show the :recipes-create scene on press"
