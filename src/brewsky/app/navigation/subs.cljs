@@ -5,7 +5,7 @@
 
 ;; Subscriptions
 
-(defn subscription->current-scene
+(defn subscribe->current-scene
   "A ratom indicating which scene is currently displayed to the user"
   []
   (subscribe [:navigation/current-scene]))

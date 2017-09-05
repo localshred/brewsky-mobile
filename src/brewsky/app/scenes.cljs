@@ -28,12 +28,10 @@
   "Gets the given scene function by keyword, or the default scene function
   if the given keyword does not have a corresponding scene."
   [scene]
-  (scene
-    scenes
-    (default-scene scenes)))
+  (scene scenes (default-scene scenes)))
 
 (defn current-scene
   "Gets the current scene to be displayed to the user."
   []
-  (let [scene (navigation/subscription->current-scene)]
+  (let [scene (navigation/subscribe->current-scene)]
     (scene-component @scene)))

@@ -45,7 +45,7 @@
 (defn component
   "Container component for this scene"
   []
-  (let [recipe-partial @(subscription->recipe-partial)]
+  (let [recipe-partial @(subs/subscribe->recipe-partial)]
     [titled-container/component
      {:title-bar {:title "New Brew"}
       :next-scene-button {:on-press #(navigation/dispatch->push-scene :colors)}}
@@ -54,11 +54,11 @@
        [labeled-input {:label "What's the name of your beer?"
                        :input [text-input {:default-value (:title recipe-partial "")
                                            :on-focus #(.log js/console "focused style")
-                                           :on-change-text #(dispatch->title-changed %)}]}]
+                                           :on-change-text #(events/dispatch->title-changed %)}]}]
 
        [labeled-input {:label "What style of beer?"
                        :input [text-input {:default-value (:style recipe-partial "")
                                            :on-focus #(.log js/console "focused style")
-                                           :on-change-text #(dispatch->style-changed %)}]}]
+                                           :on-change-text #(events/dispatch->style-changed %)}]}]
        ]]
      ]))
