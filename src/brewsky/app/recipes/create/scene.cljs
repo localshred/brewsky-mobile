@@ -70,9 +70,9 @@
   "A picker scene which presents three main buttons to create a new recipe"
   []
   [titled-container/component
-    {:style {:padding 0}
-     :title-bar {:title "New Brew"}
-     :disable-next-button true}
-    [[hero-button "Extract Brew" :extract :extract-beer-button]
-     [hero-button "All Grain Brew Kit" :kit-all-grain :all-grains-beer-button]
-     [hero-button "Custom All Grain Brew" :custom-all-grain :custom-beer-button]]])
+   {:style {:padding 0}
+    :title-bar {:title "New Brew"}
+    :disable-next-button true}
+   [[hero-button "Extract Brew" :extract :extract-beer-button]
+    [hero-button "All Grain Brew Kit" :kit-all-grain :all-grains-beer-button]
+    [hero-button "Custom All Grain Brew" :custom-all-grain :custom-beer-button]]])

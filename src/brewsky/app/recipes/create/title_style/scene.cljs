@@ -47,18 +47,18 @@
   []
   (let [recipe-partial @(subscription->recipe-partial)]
     [titled-container/component
-      {:title-bar {:title "New Brew"}
-       :next-scene-button {:on-press #(navigation/dispatch->push-scene :colors)}}
-      [[ui/view
-        {:style (:center-panel styles {})}
-        [labeled-input {:label "What's the name of your beer?"
-                        :input [text-input {:default-value (:title recipe-partial "")
-                                            :on-focus #(.log js/console "focused style")
-                                            :on-change-text #(dispatch->title-changed %)}]}]
+     {:title-bar {:title "New Brew"}
+      :next-scene-button {:on-press #(navigation/dispatch->push-scene :colors)}}
+     [[ui/view
+       {:style (:center-panel styles {})}
+       [labeled-input {:label "What's the name of your beer?"
+                       :input [text-input {:default-value (:title recipe-partial "")
+                                           :on-focus #(.log js/console "focused style")
+                                           :on-change-text #(dispatch->title-changed %)}]}]
 
-        [labeled-input {:label "What style of beer?"
-                        :input [text-input {:default-value (:style recipe-partial "")
-                                            :on-focus #(.log js/console "focused style")
-                                            :on-change-text #(dispatch->style-changed %)}]}]
-        ]]
-      ]))
+       [labeled-input {:label "What style of beer?"
+                       :input [text-input {:default-value (:style recipe-partial "")
+                                           :on-focus #(.log js/console "focused style")
+                                           :on-change-text #(dispatch->style-changed %)}]}]
+       ]]
+     ]))
