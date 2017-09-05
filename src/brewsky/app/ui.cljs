@@ -52,6 +52,8 @@
 (def list-view (r/adapt-react-class (.-ListView react-native)))
 (def modal (r/adapt-react-class (.-Modal react-native)))
 (def net-info (.-NetInfo react-native))
+(def picker (r/adapt-react-class (.-Picker react-native)))
+(def picker-item (r/adapt-react-class (.-Item (.-Picker react-native))))
 (def refresh-control (r/adapt-react-class (.-RefreshControl react-native)))
 (def scroll-view (r/adapt-react-class (.-ScrollView react-native)))
 (def status-bar (r/adapt-react-class StatusBar))
